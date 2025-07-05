@@ -1,5 +1,5 @@
 ---
-title: Hey, I'm Luis Puchades!
+title: Hey, I'm Luis Puchades Sánchez!
 description: this is meta description
 image: "@assets/backgrounds/bandera.JPG"
 draft: false
