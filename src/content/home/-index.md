@@ -4,6 +4,9 @@ imageAlt: Astrogon logo
 title: TIERRA DE ALDEAS
 content: A rapidly-customizable template for a blog, documentation, and more.
 button:
-  label: See the Code
+  label: Explorar
   link: https://github.com/astrogon/astrogon
+
+
+
 ---
