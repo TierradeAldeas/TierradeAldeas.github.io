@@ -162,6 +162,21 @@ const terms = defineCollection({
   schema: searchable,
 });
 
+const historia = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/historia",
+  }),
+  schema: ({ image }) =>
+  searchable.extend({
+    date: z.date().optional(),
+    image: image().optional(),
+    imageAlt: z.string().default(""),
+    author: reference("authors").optional(),
+    // puedes añadir campos nuevos más adelante, como periodo, región, evento, etc.
+  }),
+});
+
 // Export collections
 export const collections = {
   about,
@@ -174,4 +189,5 @@ export const collections = {
   portfolio,
   recipes,
   terms,
+  historia,
 };
