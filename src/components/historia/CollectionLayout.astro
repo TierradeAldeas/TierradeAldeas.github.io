@@ -1,18 +1,18 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-import RecipeCard from "@components/recipes/Card.astro";
+import HistoriaCard from "@components/historia/Card.astro";  // ruta según carpeta historia
 import Pagination from "@components/common/Pagination.astro";
 import PageHeader from "@components/common/PageHeader.astro";
-import type { RecipesEntry } from "@/types";
+import type { HistoriaEntry } from "@/types";
 
 interface Props {
-  entryIndex: RecipesEntry;
-  entries: RecipesEntry[];
+  entryIndex: HistoriaEntry;
+  entries: HistoriaEntry[];
   pageIndex: number;
   pageCount: number;
 }
 
-const { entryIndex, entries, pageIndex, pageCount }: Props = Astro.props;
+const { entryIndex, entries, pageIndex, pageCount } = Astro.props;
 ---
 
 <BaseLayout
@@ -27,13 +27,13 @@ const { entryIndex, entries, pageIndex, pageCount }: Props = Astro.props;
         {
           entries.map((entry) => (
             <div class="md:col-6 lg:col-4 h-min p-2">
-              <RecipeCard entry={entry} />
+              <HistoriaCard entry={entry} />
             </div>
           ))
         }
       </div>
       <Pagination
-        collection="recipes"
+        collection="historia"
         pageIndex={pageIndex}
         pageCount={pageCount}
       />
