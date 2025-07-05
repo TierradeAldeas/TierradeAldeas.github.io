@@ -1,5 +1,5 @@
 ---
-image: "@assets/Logoaldeas.jpg"
+image: "@assets/logoaldeas.jpg"
 imageAlt: Astrogon logo
 title: TIERRA DE ALDEAS
 content: A rapidly-customizable template for a blog, documentation, and more.
