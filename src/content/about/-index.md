@@ -1,7 +1,7 @@
 ---
 title: Hey, I'm Luis Puchades!
 description: this is meta description
-image: "@assets/bandera.JPG"
+image: "@assets/backgrounds/bandera.JPG"
 draft: false
 ---
 
