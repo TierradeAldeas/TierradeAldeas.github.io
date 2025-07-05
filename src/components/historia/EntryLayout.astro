@@ -1,19 +1,17 @@
 ---
-import type { RecipesEntry } from "@/types";
+import type { HistoriaEntry } from "@/types";
 import Share from "@components/common/Share.astro";
 import { Image } from "astro:assets";
 import BaseLayout from "@components/base/BaseLayout.astro";
 import { upperHumanize, markdownify, slugify } from "@lib/textConverter";
 
+// Importa solo los iconos que vayas a usar, adapta si necesario
 import {
-  FaRegClock,
   FaRegUserCircle,
-  FaUtensils,
-  FaSeedling,
 } from "react-icons/fa";
 
 interface Props {
-  entry: RecipesEntry;
+  entry: HistoriaEntry;
 }
 
 const { entry } = Astro.props;
@@ -23,12 +21,7 @@ const {
   description,
   image,
   imageAlt,
-  prepTime,
-  servings,
-  diet,
-  ingredients,
-  instructions,
-  notes,
+  // Aquí quita propiedades específicas de recetas y añade las que necesites para historia
 } = entry.data;
 ---
 
@@ -42,7 +35,7 @@ const {
           <!-- Cover Photo -->
           {
             image && (
-              <div class="col basis-2/3 p-2 min-w-72">
+              <div class="col basis-full p-2 min-w-72">  <!-- aquí cambia tamaño si quieres -->
                 <div class="glass rounded-lg intersect:animate-fadeDown opacity-0">
                   <Image
                     class="w-full rounded-lg"
@@ -56,10 +49,9 @@ const {
               </div>
             )
           }
-          <!-- About -->
-          <section class="col basis-1/3 p-2 min-w-72">
+          <!-- About / Author -->
+          <section class="col basis-full p-2 min-w-72">
             <div class="glass rounded-lg p-2 h-full intersect:animate-fadeUp opacity-0">
-              <!-- Author -->
               {
                 author && (
                   <div class="m-4">
@@ -70,40 +62,9 @@ const {
                   </div>
                 )
               }
-              <!-- Prep Time -->
-              {
-                prepTime && (
-                  <div class="m-4">
-                    <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-                    {prepTime + " minutes"}
-                  </div>
-                )
-              }
-              <!-- Servings -->
-              {
-                servings && (
-                  <div class="m-4">
-                    <FaUtensils className={"mr-2 -mt-1 inline-block"} />
-                    {servings === 1 ? "1 serving" : servings + " servings"}
-                  </div>
-                )
-              }
-              <!-- Diet -->
-              {
-                diet && (
-                  <div class="m-4">
-                    <FaSeedling className={"mr-2 -mt-1 inline-block"} />
-                    {diet}
-                  </div>
-                )
-              }
-              <!-- Description -->
               {
                 description && (
                   <div>
-                    {author || prepTime || servings || diet ? (
-                      <hr class="my-2" />
-                    ) : null}
                     <div class="m-4">
                       <div set:html={markdownify(description)} />
                     </div>
@@ -112,75 +73,14 @@ const {
               }
             </div>
           </section>
-          <!-- Ingredients -->
-          {
-            ingredients && (
-              <section class="col basis-1/3 p-2 min-w-72">
-                <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
-                  <h2 set:html="Ingredients" class="mb-2" />
-                  <div class="row justify-center">
-                    {ingredients.list.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col-7" set:html={ingredients.list[index]} />
-                        <div
-                          class="col-5 text-right"
-                          set:html={ingredients.qty[index]}
-                        />
-                        <hr class="my-1" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )
-          }
-          <!-- Instructions -->
-          {
-            instructions && (
-              <section class="col basis-full p-2 min-w-72">
-                <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
-                  <h2 set:html="Instructions" class="mb-2" />
-                  <div class="row justify-center">
-                    {instructions.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col">
-                          {index + 1}. {it}
-                        </div>
-                        <hr class="my-1" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )
-          }
-          <!-- Notes -->
-          {
-            notes && (
-              <section class="col basis-full p-2 min-w-72">
-                <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
-                  <h2 set:html="Notes" class="mb-2" />
-                  <div class="row justify-center">
-                    {notes.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col">{it}</div>
-                        <hr class="my-1" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )
-          }
+          <!-- Aquí añade más secciones específicas para historia, si necesitas -->
         </article>
         <!-- Share -->
-        <div
-          class="flex col-10 p-2 items-center justify-center lg:justify-end px-6"
-        >
+        <div class="flex col-10 p-2 items-center justify-center lg:justify-end px-6">
           <Share
             title={title}
             description={description}
-            folder="recipes"
+            folder="historia"
             id={entry.id}
           />
         </div>
