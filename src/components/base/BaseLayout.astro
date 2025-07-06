@@ -47,7 +47,7 @@ const baseUrl = "https://janedoe.com";
       sizes="16x16"
       href="/favicon/favicon-16x16.png"
     />
-    
+
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <meta name="theme-name" content="pages" />
@@ -108,6 +108,15 @@ const baseUrl = "https://janedoe.com";
     />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHTEW1M2ZJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SHTEW1M2ZJ');
+    </script>
+
     <!-- Katex -->
     <link
       rel="stylesheet"
@@ -126,7 +135,7 @@ const baseUrl = "https://janedoe.com";
       integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
       crossorigin="anonymous"
       onload="renderMathInElement(document.body);"></script>
-      
+
     <!-- https://docs.astro.build/en/guides/view-transitions -->
     <ClientRouter fallback="swap" />
     <Tooltips interactive={false} delay={[333, 0]} />
